@@ -2,11 +2,13 @@ import { LuShoppingBasket } from "react-icons/lu";
 import { IoIosList } from "react-icons/io";
 import { BiCategory } from "react-icons/bi";
 import { MdHistory } from "react-icons/md";
+import { BsCart3 } from "react-icons/bs";
+import { FaUser } from "react-icons/fa";
 
 const Homepage = () => {
       return (
-            <div className="border border-red-700 h-full w-full p-6 grid grid-cols-1 lg:grid-cols-[30%_70%] justify-items-start">
-                  <aside className="">
+            <div className="border border-red-700 h-full w-full  grid grid-cols-1 lg:grid-cols-[30%_70%] justify-items-start">
+                  <aside className="border-r border-gray-400 p-8">
                         <div className="flex flex-col gap-4">
                               <div className="flex gap-3 items-center text-shadow-lg font-bold">
                                     <LuShoppingBasket className="text-green-600 text-2xl" />
@@ -30,9 +32,17 @@ const Homepage = () => {
                               </nav>
                         </div>
                   </aside>
-                  <main className="border border-amber-900 w-full text-shadow-lg font-bold">
+                  <header className="flex justify-between items-center p-8 -mt-30  w-full text-shadow-lg font-bold">
                         <h2>Lista de Compras</h2>
-                  </main>
+                        <div className="flex  gap-8 border-2">
+                              <BsCart3 />
+                              <div className="flex items-center gap-2">
+                                    <FaUser />
+                                    <span>Usuario</span>
+
+                              </div>
+                        </div>
+                  </header>
             </div>
       )
 }
