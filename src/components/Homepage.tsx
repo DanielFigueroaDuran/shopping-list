@@ -4,6 +4,7 @@ import { BiCategory } from "react-icons/bi";
 import { MdHistory } from "react-icons/md";
 import { BsCart3 } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
+import { RiAddFill } from "react-icons/ri";
 
 const Homepage = () => {
       return (
@@ -32,17 +33,28 @@ const Homepage = () => {
                               </nav>
                         </div>
                   </aside>
-                  <header className="flex justify-between items-center p-8 -mt-30  w-full text-shadow-lg font-bold">
-                        <h2>Lista de Compras</h2>
-                        <div className="flex  gap-8 border-2">
-                              <BsCart3 />
-                              <div className="flex items-center gap-2">
-                                    <FaUser />
-                                    <span>Usuario</span>
-
+                  <main className="flex flex-col gap-5 w-full h-full p-8">
+                        <div className="flex justify-between  items-center p-4  w-full text-shadow-lg font-bold ">
+                              <h2>Lista de Compras</h2>
+                              <div className="flex items-center gap-8">
+                                    <BsCart3 />
+                                    <div className="flex items-center gap-2">
+                                          <div className="rounded-full bg-green-600 p-1">
+                                                <FaUser className="text-white rounded-full" />
+                                          </div>
+                                          <span className="text-xs font-semibold text-shadow-lg">Usuario</span>
+                                    </div>
                               </div>
                         </div>
-                  </header>
+                        <div className="flex items-center gap-2 border bg-gray-100 border-gray-200 rounded-lg px-3 py-2 w-full">
+                              <RiAddFill className="text-green-600" />
+                              <input
+                                    type="text"
+                                    placeholder="Agregar produtos"
+                                    className="outline-none w-full"
+                              />
+                        </div>
+                  </main>
             </div>
       )
 }
