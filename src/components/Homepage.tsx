@@ -11,7 +11,7 @@ import ProductTable from "./ProductTable";
 const Homepage = () => {
       return (
             <div className="border border-red-700 h-full w-full  grid grid-cols-1 lg:grid-cols-[30%_70%] justify-items-start">
-                  <aside className="border-r border-gray-400 p-8">
+                  <aside className="lg:border-r lg:border-gray-400 p-8">
                         <div className="flex flex-col gap-4">
                               <div className="flex gap-3 items-center text-shadow-lg font-bold">
                                     <LuShoppingBasket className="text-green-600 text-2xl" />
