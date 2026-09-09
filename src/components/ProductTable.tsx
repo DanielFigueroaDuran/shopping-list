@@ -1,87 +1,64 @@
-import {
-      Table,
-      TableBody,
-      TableCaption,
-      TableCell,
-      TableFooter,
-      TableHead,
-      TableHeader,
-      TableRow,
-} from "@/components/ui/table"
 
-const invoices = [
-      {
-            invoice: "INV001",
-            paymentStatus: "Paid",
-            totalAmount: "$250.00",
-            paymentMethod: "Credit Card",
-      },
-      {
-            invoice: "INV002",
-            paymentStatus: "Pending",
-            totalAmount: "$150.00",
-            paymentMethod: "PayPal",
-      },
-      {
-            invoice: "INV003",
-            paymentStatus: "Unpaid",
-            totalAmount: "$350.00",
-            paymentMethod: "Bank Transfer",
-      },
-      {
-            invoice: "INV004",
-            paymentStatus: "Paid",
-            totalAmount: "$450.00",
-            paymentMethod: "Credit Card",
-      },
-      {
-            invoice: "INV005",
-            paymentStatus: "Paid",
-            totalAmount: "$550.00",
-            paymentMethod: "PayPal",
-      },
-      {
-            invoice: "INV006",
-            paymentStatus: "Pending",
-            totalAmount: "$200.00",
-            paymentMethod: "Bank Transfer",
-      },
-      {
-            invoice: "INV007",
-            paymentStatus: "Unpaid",
-            totalAmount: "$300.00",
-            paymentMethod: "Credit Card",
-      },
-]
-
-export function ProductTable() {
+const ProductTable = () => {
       return (
-            <Table>
-                  <TableCaption>A list of your recent invoices.</TableCaption>
-                  <TableHeader>
-                        <TableRow>
-                              <TableHead className="w-25">Producto</TableHead>
-                              <TableHead>Cantidad</TableHead>
-                              <TableHead>Acciones</TableHead>
-                              <TableHead className="text-right">Amount</TableHead>
-                        </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                        {invoices.map((invoice) => (
-                              <TableRow key={invoice.invoice}>
-                                    <TableCell className="font-medium">{invoice.invoice}</TableCell>
-                                    <TableCell>{invoice.paymentStatus}</TableCell>
-                                    <TableCell>{invoice.paymentMethod}</TableCell>
-                                    <TableCell className="text-right">{invoice.totalAmount}</TableCell>
-                              </TableRow>
-                        ))}
-                  </TableBody>
-                  <TableFooter>
-                        <TableRow>
-                              <TableCell colSpan={3}>Total</TableCell>
-                              <TableCell className="text-right">$2,500.00</TableCell>
-                        </TableRow>
-                  </TableFooter>
-            </Table>
+            <>
+
+                  {/* <template className="w-full h-full border-2"> */}
+                  <div className="p-5 h-screen bg-gray-100 rounded-lg">
+                        <h2 className="text-xl mb-2">Your orders</h2>
+                        <div className="overflow-auto rounded-lg shadow">
+                              <table className="w-full">
+                                    <thead className=" bg-gray-50 border-b-2 border-gray-200">
+                                          <tr>
+                                                <th className="p-3 text-sm font-semibold tracking-wide text-left">No.</th>
+                                                <th className="p-3 text-sm font-semibold tracking-wide text-left">Details</th>
+                                                <th className="p-3 text-sm font-semibold tracking-wide text-left">status</th>
+                                                <th className="p-3 text-sm font-semibold tracking-wide text-left">Date</th>
+                                                <th className="p-3 text-sm font-semibold tracking-wide text-left">Total</th>
+                                          </tr>
+                                    </thead>
+
+                                    <tbody>
+                                          <tr className="bg-white">
+                                                <td className="p-3 text-sm text-gray-700">
+                                                      <a href="#" className="font-bold tect-blue-500 hover:underline">10001</a>
+                                                </td>
+                                                <td className="p-3 text-sm text-gray-700">Kring New Fit office</td>
+                                                <td className="p-3 text-sm text-gray-700">Delivered</td>
+                                                <td className="p-3 text-sm text-gray-700">16/10/2026</td>
+                                                <td className="p-3 text-sm text-gray-700">$200.00</td>
+                                          </tr>
+                                          <tr className="bg-gray-20">
+                                                <td className="p-3 text-sm text-gray-700">
+                                                      <a href="#" className="font-bold tect-blue-500 hover:underline">10002</a>
+                                                </td>
+                                                <td className="p-3 text-sm text-gray-700">Kring New Fit office</td>
+                                                <td className="p-3 text-sm text-gray-700">
+                                                      <span className="p-1.5 text-xs font-medium uppercase tracking-wide text-yellow-800 bg-yellow-200 rounded-lg opacity-50">Shipped</span>
+                                                </td>
+                                                <td className="p-3 text-sm text-gray-700">16/10/2026</td>
+                                                <td className="p-3 text-sm text-gray-700">$200.00</td>
+                                          </tr>
+                                          <tr className="bg-white">
+                                                <td className="p-3 text-sm text-gray-700">
+                                                      <a href="#" className="font-bold tect-blue-500 hover:underline">10003</a>
+                                                </td>
+                                                <td className="p-3 text-sm text-gray-700">Kring New Fit office</td>
+                                                <td className="p-3 text-sm text-gray-700">
+                                                      <span className="p-1.5 text-xs font-medium uppercase tracking-wide text-yellow-800 bg-yellow-200 rounded-lg opacity-50">
+                                                            Canceled
+                                                      </span>
+                                                </td>
+                                                <td className="p-3 text-sm text-gray-700">16/10/2026</td>
+                                                <td className="p-3 text-sm text-gray-700">$200.00</td>
+                                          </tr>
+                                    </tbody>
+                              </table>
+                        </div>
+                  </div>
+                  {/* </template> */}
+            </>
       )
 }
+
+export default ProductTable

@@ -5,7 +5,8 @@ import { MdHistory } from "react-icons/md";
 import { BsCart3 } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
 import { RiAddFill } from "react-icons/ri";
-import { ProductTable } from './ProductTable';
+import ProductTable from "./ProductTable";
+
 
 const Homepage = () => {
       return (
