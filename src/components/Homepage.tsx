@@ -6,9 +6,27 @@ import { BsCart3 } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
 import { RiAddFill } from "react-icons/ri";
 import ProductTable from "./ProductTable";
+import { useState } from "react";
+
+type Order = {
+      id: number,
+      details: string,
+      status: "Delivered" | "Shipped" | "Canceled",
+      date: string,
+      total: number
+};
 
 
 const Homepage = () => {
+      const [orders, setOrders] = useState<Order[]>([
+            {
+                  id: 10003,
+                  details: "New product",
+                  status: "Delivered",
+                  date: "17/10/2026",
+                  total: 150,
+            },
+      ]);
       return (
             <div className="border border-red-700 h-full w-full  grid grid-cols-1 lg:grid-cols-[30%_70%] justify-items-start">
                   <aside className="lg:border-r lg:border-gray-400 p-8">
@@ -57,7 +75,7 @@ const Homepage = () => {
                               />
                         </div>
 
-                        <ProductTable />
+                        {orders.length === 0 ? "" : <ProductTable orders={orders} />}
                   </main>
 
             </div>
