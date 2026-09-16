@@ -7,6 +7,7 @@ import { FaUser } from "react-icons/fa";
 import { RiAddFill } from "react-icons/ri";
 import ProductTable from "./ProductTable";
 import { useState } from "react";
+import ProductForm from "./ProductForm";
 
 type Order = {
       id: number,
@@ -19,13 +20,13 @@ type Order = {
 
 const Homepage = () => {
       const [orders, setOrders] = useState<Order[]>([
-            {
-                  id: 10003,
-                  details: "New product",
-                  status: "Delivered",
-                  date: "17/10/2026",
-                  total: 150,
-            },
+            // {
+            //       id: 10003,
+            //       details: "New product",
+            //       status: "Delivered",
+            //       date: "17/10/2026",
+            //       total: 150,
+            // },
       ]);
       return (
             <div className="border border-red-700 h-full w-full  grid grid-cols-1 lg:grid-cols-[30%_70%] justify-items-start">
@@ -66,14 +67,16 @@ const Homepage = () => {
                                     </div>
                               </div>
                         </div>
-                        <div className="flex items-center gap-2 border bg-gray-100 border-gray-200 rounded-lg px-3 py-2 w-full">
+
+                        <ProductForm />
+                        {/* <div className="flex items-center gap-2 border bg-gray-100 border-gray-200 rounded-lg px-3 py-2 w-full">
                               <RiAddFill className="text-green-600" />
                               <input
                                     type="text"
                                     placeholder="Agregar produtos"
                                     className="outline-none w-full"
                               />
-                        </div>
+                        </div> */}
 
                         {orders.length === 0 ? "" : <ProductTable orders={orders} />}
                   </main>
