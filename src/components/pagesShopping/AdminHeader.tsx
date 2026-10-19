@@ -19,10 +19,10 @@ const AdminHeader = () => {
                         </div>
                   </div>
 
-                  <ProductForm />
-                  
+                  <ProductForm />                  
 
                   {/* {orders.length === 0 ? "" : <ProductTable orders={orders} />} */}
+                  
             </main>
       )
 }
