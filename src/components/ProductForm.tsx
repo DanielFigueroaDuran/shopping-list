@@ -40,7 +40,7 @@ const ProductForm = () => {
 
       return (
             <>
-                  <div className="w-full h-full shadow-2xl p-4 rounded-sm">
+                  <div className="w-full shadow-2xl p-4 rounded-sm">
                         <h2 className="text-shadow-lg font-bold">Agregar Articulos</h2>
                         <form
                               onSubmit={handleSubmit}

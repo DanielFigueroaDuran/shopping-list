@@ -1,9 +1,14 @@
-import ProductForm  from "../ProductForm"
-import ProductTable  from "../ProductTable"
+import { useContext } from "react";
+import { ProductsContext } from "@/context/ProductsContext";
+import ProductForm from "../ProductForm"
+//import ProductTable  from "../ProductTable"
 import { BsCart3 } from "react-icons/bs"
-import { FaUser } from "react-icons/fa"
+//import { FaUser } from "react-icons/fa"
 
 const AdminHeader = () => {
+      const context = useContext(ProductsContext);
+
+
       return (
             <main className="flex flex-col w-full h-full p-4 border border-gray-400">
                   <div className="flex justify-between items-center p-4 w-full text-shadow-lg font-bold ">
@@ -19,10 +24,10 @@ const AdminHeader = () => {
                         </div>
                   </div>
 
-                  <ProductForm />                  
+                  <ProductForm />
 
                   {/* {orders.length === 0 ? "" : <ProductTable orders={orders} />} */}
-                  
+
             </main>
       )
 }
