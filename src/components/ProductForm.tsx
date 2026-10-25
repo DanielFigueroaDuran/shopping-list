@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useProducts } from "@/hooks/useProducts";
+import { useState, type SubmitEvent } from "react";
 import { MdOutlineEuro } from "react-icons/md"
 import { RiAddFill } from "react-icons/ri"
 
@@ -9,41 +10,44 @@ type Product = {
 };
 
 const ProductForm = () => {
-      const [product, setProduct] = useState("");
+      const [nameProduct, setNameProduct] = useState("");
       const [price, setPrice] = useState("");
-      const [products, setProducts] = useState<Product[]>([]);
+      const { dispatch } = useProducts();
 
-      console.log(products);
-
-      const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
+      const handleSubmit2 = (event: SubmitEvent<HTMLFormElement>) => {
             event.preventDefault();
 
-            if (!product.trim() || price === "" || +(price) <= 0) {
-                  // return alert("Por favor, complete todos los campos correctamente.");
+            if (!isValidProduct) {
                   return;
-            };
+            }
 
-            const newProduct: Product = {
-                  id: Date.now(),
-                  name: product.trim(),
-                  price: +(price)
-            };
+            dispatch({
+                  type: "add-product",
+                  payload: {
+                        id: Date.now(),
+                        name: nameProduct.trim(),
+                        price: Number(price),
+                  },
+            });
 
-            // Add the new product to the state
-            setProducts((prevProducts) => [...prevProducts, newProduct]);
-
-            // Clear the form
-            setProduct("");
+            // Clear the fields after adding the product
+            setNameProduct("");
             setPrice("");
+
       };
-      const isValidProduct = !product.trim() || price === "" || +(price) <= 0;
+
+      const isValidProduct =
+            nameProduct.trim() !== "" &&
+            price.trim() !== "" &&
+            Number.isFinite(Number(price)) &&
+            Number(price) > 0;
 
       return (
             <>
                   <div className="w-full shadow-2xl p-4 rounded-sm">
                         <h2 className="text-shadow-lg font-bold">Agregar Articulos</h2>
                         <form
-                              onSubmit={handleSubmit}
+                              onSubmit={handleSubmit2}
                               className="grid lg:grid-cols-2 gap-6 mt-4"
                         >
                               <div className="">
@@ -57,8 +61,8 @@ const ProductForm = () => {
                                                 type="text"
                                                 placeholder="Agregar articulos"
                                                 className="outline-none w-full"
-                                                value={product}
-                                                onChange={(event) => setProduct(event.target.value)}
+                                                value={nameProduct}
+                                                onChange={(event) => setNameProduct(event.target.value)}
                                           />
                                     </div>
                               </div>
@@ -83,10 +87,11 @@ const ProductForm = () => {
 
                               <button
                                     type="submit"
+                                    disabled={!isValidProduct}
                                     className={` px-3 py-2 rounded-lg
                                     ${isValidProduct
-                                                ? "bg-green-200 text-slate-400 cursor-not-allowed opacyty-40"
-                                                : "cursor-pointer text-white bg-green-500 hover:bg-green-700"}
+                                                ? "cursor-pointer text-white bg-green-500 hover:bg-green-700"
+                                                : "bg-green-200 text-slate-400 cursor-not-allowed opacyty-40"}
                                           `}
                               >
                                     Agregar
@@ -94,7 +99,7 @@ const ProductForm = () => {
                         </form >
                   </div>
 
-                  <div className="mt-6">
+                  {/* <div className="mt-6">
                         <h3 className="font-bold">Productos agregados</h3>
 
                         {products.length === 0 ? (
@@ -112,7 +117,7 @@ const ProductForm = () => {
                                     ))}
                               </ul>
                         )}
-                  </div>
+                  </div> */}
             </>
       )
 }

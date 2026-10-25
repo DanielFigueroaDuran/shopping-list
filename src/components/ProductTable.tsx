@@ -11,7 +11,7 @@ type ProductTableProps = {
       orders: Order[]
 }
 
-const ProductTable = ({ orders }: ProductTableProps) => {
+const ProductTable = () => {
       return (
             <div className="h-full bg-gray-100 p-3 sm:p-5 rounded-lg">
                   <h2 className="text-xl mb-2">Articulos</h2>
@@ -42,7 +42,7 @@ const ProductTable = ({ orders }: ProductTableProps) => {
                                     </tr>
                               </thead>
 
-                              <tbody className="divide-y divide-gray-100">
+                              {/* <tbody className="divide-y divide-gray-100">
                                     {orders.map((order, index) => (
                                           <tr
                                                 key={order.id}
@@ -83,7 +83,7 @@ const ProductTable = ({ orders }: ProductTableProps) => {
                                                 </td>
                                           </tr>
                                     ))}
-                              </tbody>
+                              </tbody> */}
                         </table>
                   </div>
             </div>

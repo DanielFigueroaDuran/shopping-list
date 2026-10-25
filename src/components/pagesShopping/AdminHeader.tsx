@@ -1,16 +1,19 @@
-import { useContext } from "react";
-import { ProductsContext } from "@/context/ProductsContext";
 import ProductForm from "../ProductForm"
 //import ProductTable  from "../ProductTable"
 import { BsCart3 } from "react-icons/bs"
+import { useProducts } from "@/hooks/useProducts";
+import ProductTable from "../ProductTable";
 //import { FaUser } from "react-icons/fa"
 
 const AdminHeader = () => {
-      const context = useContext(ProductsContext);
+      const { state } = useProducts();
 
+      const isValidProduct = state.products.length > 0;
+
+      console.log(state.products);
 
       return (
-            <main className="flex flex-col w-full h-full p-4 border border-gray-400">
+            <main className="flex flex-col w-full min-h-full p-4 border border-gray-400">
                   <div className="flex justify-between items-center p-4 w-full text-shadow-lg font-bold ">
                         <h2 className="hidden lg:block">Lista de Compras</h2>
                         <div className="flex items-center gap-8">
@@ -26,8 +29,9 @@ const AdminHeader = () => {
 
                   <ProductForm />
 
-                  {/* {orders.length === 0 ? "" : <ProductTable orders={orders} />} */}
-
+                  <div className="shadow-2xl rounded-sm mt-5 ">
+                        {isValidProduct ? <ProductTable /> : ' No hay Articulos a la lista de Compras'}
+                  </div>
             </main>
       )
 }
