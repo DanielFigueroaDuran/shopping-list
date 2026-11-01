@@ -3,12 +3,6 @@ import { useState, type SubmitEvent } from "react";
 import { MdOutlineEuro } from "react-icons/md"
 import { RiAddFill } from "react-icons/ri"
 
-type Product = {
-      id: number,
-      name: string,
-      price: number
-};
-
 const ProductForm = () => {
       const [nameProduct, setNameProduct] = useState("");
       const [price, setPrice] = useState("");
@@ -98,26 +92,6 @@ const ProductForm = () => {
                               </button>
                         </form >
                   </div>
-
-                  {/* <div className="mt-6">
-                        <h3 className="font-bold">Productos agregados</h3>
-
-                        {products.length === 0 ? (
-                              <p className="text-gray-500 mt-2">Todavía no hay productos.</p>
-                        ) : (
-                              <ul className="mt-2 space-y-2">
-                                    {products.map((item) => (
-                                          <li
-                                                key={item.id}
-                                                className="flex justify-between border-b py-2"
-                                          >
-                                                <span>{item.name}</span>
-                                                <span>{item.price.toFixed(2)} €</span>
-                                          </li>
-                                    ))}
-                              </ul>
-                        )}
-                  </div> */}
             </>
       )
 }

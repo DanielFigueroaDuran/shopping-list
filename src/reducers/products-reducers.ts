@@ -8,7 +8,14 @@ export type ProductActions =
       {
             type: "delete-product";
             payload: number;
-      }
+      } |
+      {
+            type: "update-quantity";
+            payload: {
+                  id: number;
+                  quantity: number;
+            };
+      };
 
 export type ProductState = {
       products: Products[];
@@ -16,6 +23,7 @@ export type ProductState = {
 
 export const initialState: ProductState = {
       products: [],
+
 };
 
 export const productsReducer = (
@@ -32,6 +40,15 @@ export const productsReducer = (
                         state,
                         products: state.products.filter(
                               (product) => product.id !== action.payload
+                        ),
+                  };
+            case "update-quantity":
+                  return {
+                        ...state,
+                        products: state.products.map((product) =>
+                              product.id === action.payload.id
+                                    ? { ...product, quantity: action.payload.quantity }
+                                    : product
                         ),
                   };
 

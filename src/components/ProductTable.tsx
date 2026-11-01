@@ -1,38 +1,10 @@
 import { useProducts } from "@/hooks/useProducts"
 import Counter from "./Counter"
 
-type Order = {
-      id: number
-      details: string
-      date: string
-      total: number
-}
-
-// type ProductTableProps = {
-//       orders: Order[]
-// }
-
 const ProductTable = () => {
       const { state } = useProducts();
 
       return (
-            // <div className="mt-6">
-            //       <h3 className="font-bold"> Productos Agregados</h3>
-            //       <ul className="mt-2 space-y-2">
-            //             {state.products.map(product => (
-            //                   <li
-            //                         key={product.id}
-            //                         className="flex justify-between border-b py-2"
-            //                   >
-            //                         <span>
-            //                               {product.name}
-            //                         </span>
-            //                         <span>{product.price} €</span>
-            //                   </li>
-            //             ))
-            //             }
-            //       </ul>
-            // </div>
             <div className="h-full bg-gray-100 p-3 sm:p-5 rounded-lg">
                   <h2 className="text-xl mb-2">Articulos</h2>
 
@@ -68,12 +40,7 @@ const ProductTable = () => {
                                                 key={product.id}
                                           >
                                                 <td className="p-3 text-sm text-gray-700">
-                                                      <a
-                                                            href="#"
-                                                            className="font-bold text-blue-500 hover:underline"
-                                                      >
-                                                            {product.id}
-                                                      </a>
+                                                      <span>agregar</span>
                                                 </td>
 
                                                 <td className="p-3 text-sm text-gray-700">
