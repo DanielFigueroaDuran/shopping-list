@@ -1,18 +1,38 @@
+import { useProducts } from "@/hooks/useProducts"
+import Counter from "./Counter"
 
 type Order = {
       id: number
       details: string
-      status: "Delivered" | "Shipped" | "Canceled"
       date: string
       total: number
 }
 
-type ProductTableProps = {
-      orders: Order[]
-}
+// type ProductTableProps = {
+//       orders: Order[]
+// }
 
 const ProductTable = () => {
+      const { state } = useProducts();
+
       return (
+            // <div className="mt-6">
+            //       <h3 className="font-bold"> Productos Agregados</h3>
+            //       <ul className="mt-2 space-y-2">
+            //             {state.products.map(product => (
+            //                   <li
+            //                         key={product.id}
+            //                         className="flex justify-between border-b py-2"
+            //                   >
+            //                         <span>
+            //                               {product.name}
+            //                         </span>
+            //                         <span>{product.price} €</span>
+            //                   </li>
+            //             ))
+            //             }
+            //       </ul>
+            // </div>
             <div className="h-full bg-gray-100 p-3 sm:p-5 rounded-lg">
                   <h2 className="text-xl mb-2">Articulos</h2>
 
@@ -32,7 +52,7 @@ const ProductTable = () => {
                                                 Precio
                                           </th>
 
-                                          <th className="w-24 p-3 text-sm font-semibold tracking-wide text-left">
+                                          <th className="w-24 p-3  text-sm font-semibold tracking-wide text-left">
                                                 Cantidad
                                           </th>
 
@@ -42,48 +62,42 @@ const ProductTable = () => {
                                     </tr>
                               </thead>
 
-                              {/* <tbody className="divide-y divide-gray-100">
-                                    {orders.map((order, index) => (
+                              <tbody className="divide-y divide-gray-100">
+                                    {state.products.map((product) => (
                                           <tr
-                                                key={order.id}
-                                                className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}
+                                                key={product.id}
                                           >
                                                 <td className="p-3 text-sm text-gray-700">
                                                       <a
                                                             href="#"
                                                             className="font-bold text-blue-500 hover:underline"
                                                       >
-                                                            {order.id}
+                                                            {product.id}
                                                       </a>
                                                 </td>
 
                                                 <td className="p-3 text-sm text-gray-700">
-                                                      {order.details}
+                                                      {product.name}
                                                 </td>
 
                                                 <td className="p-3 text-sm text-gray-700">
-                                                      <span
-                                                            className={`p-1.5 text-xs font-medium uppercase tracking-wide rounded-lg opacity-70 ${order.status === "Delivered"
-                                                                  ? "text-green-800 bg-green-200"
-                                                                  : order.status === "Shipped"
-                                                                        ? "text-yellow-800 bg-yellow-200"
-                                                                        : "text-gray-800 bg-gray-200"
-                                                                  }`}
-                                                      >
-                                                            {order.status}
+                                                      <span className="p-2">
+                                                            {product.price.toFixed(2)} €
                                                       </span>
                                                 </td>
 
                                                 <td className="p-3 text-sm text-gray-700">
-                                                      {order.date}
+                                                      <span className="">
+                                                            <Counter />
+                                                      </span>
                                                 </td>
 
                                                 <td className="p-3 text-sm text-gray-700">
-                                                      ${order.total.toFixed(2)}
+                                                      {product.price.toFixed(2)} €
                                                 </td>
                                           </tr>
                                     ))}
-                              </tbody> */}
+                              </tbody>
                         </table>
                   </div>
             </div>

@@ -10,7 +10,7 @@ const AdminHeader = () => {
 
       const isValidProduct = state.products.length > 0;
 
-      console.log(state.products);
+      // console.log(state.products);
 
       return (
             <main className="flex flex-col w-full min-h-full p-4 border border-gray-400">
