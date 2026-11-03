@@ -1,3 +1,5 @@
+import minus from "../assets/heroicons-outline_minus-sm.png"
+import plus from "../assets/heroicons-outline_plus-sm.png"
 
 
 type CounterProps = {
@@ -14,34 +16,24 @@ const Counter = ({ quantity, onChange }: CounterProps) => {
       const handleAdd = () => {
             onChange(quantity + 1);
       };
-      // const handleSubtract = () => {
-      //       const subtract = counter - 1;
-      //       if (subtract <= 0) {
-      //             return
-      //       };
-      //       setCounter(subtract);
-      // };
-
-      // const handleAdd = () => {
-
-      //       setCounter(counter + 1);
-      // };
 
       return (
 
-            <div className="border-2 flex justify-center items-center gap-2 p-1">
+            <div className="flex justify-center items-center gap-2 p-1">
                   <button
-                        className="border-2 border-green-300 rounded-md p-1"
+                        className="flex items-center w-4 h-4 cursor-pointer"
                         onClick={handleSubtract}
                   >
-                        -
+                        <img src={minus} alt="Minus" />
                   </button>
-                  <span>{quantity}</span>
+                  <span>
+                        <p className='w-6 h-5 text-[#2a5b45] bg-[#2a5b451a] text-center rounded-full'>{quantity}</p>
+                  </span>
                   <button
-                        className="border-2 border-green-300 rounded-md p-1 "
+                        className="flex items-center w-4 h-4 cursor-pointer "
                         onClick={handleAdd}
                   >
-                        +
+                        <img src={plus} alt="Plus" />
                   </button>
             </div>
       )
