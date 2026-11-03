@@ -8,7 +8,7 @@ const ProductForm = () => {
       const [price, setPrice] = useState("");
       const { dispatch } = useProducts();
 
-      const handleSubmit2 = (event: SubmitEvent<HTMLFormElement>) => {
+      const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
             event.preventDefault();
 
             if (!isValidProduct) {
@@ -20,7 +20,8 @@ const ProductForm = () => {
                   payload: {
                         id: Date.now(),
                         name: nameProduct.trim(),
-                        price: Number(price),
+                        price: +(price),
+                        quantity: 1,
                   },
             });
 
@@ -41,7 +42,7 @@ const ProductForm = () => {
                   <div className="w-full shadow-2xl p-4 rounded-sm">
                         <h2 className="text-shadow-lg font-bold">Agregar Articulos</h2>
                         <form
-                              onSubmit={handleSubmit2}
+                              onSubmit={handleSubmit}
                               className="grid lg:grid-cols-2 gap-6 mt-4"
                         >
                               <div className="">

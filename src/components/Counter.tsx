@@ -1,21 +1,31 @@
-import { useState } from "react"
 
 
-const Counter = () => {
-      const [counter, setCounter] = useState(1);
+type CounterProps = {
+      quantity: number;
+      onChange: (quantity: number) => void;
+};
+
+const Counter = ({ quantity, onChange }: CounterProps) => {
 
       const handleSubtract = () => {
-            const subtract = counter - 1;
-            if (subtract <= 0) {
-                  return
-            };
-            setCounter(subtract);
+            onChange(Math.max(1, quantity - 1));
       };
 
       const handleAdd = () => {
-
-            setCounter(counter + 1);
+            onChange(quantity + 1);
       };
+      // const handleSubtract = () => {
+      //       const subtract = counter - 1;
+      //       if (subtract <= 0) {
+      //             return
+      //       };
+      //       setCounter(subtract);
+      // };
+
+      // const handleAdd = () => {
+
+      //       setCounter(counter + 1);
+      // };
 
       return (
 
@@ -26,7 +36,7 @@ const Counter = () => {
                   >
                         -
                   </button>
-                  <span>{counter}</span>
+                  <span>{quantity}</span>
                   <button
                         className="border-2 border-green-300 rounded-md p-1 "
                         onClick={handleAdd}

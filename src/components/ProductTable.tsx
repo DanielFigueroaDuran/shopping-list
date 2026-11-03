@@ -2,8 +2,9 @@ import { useProducts } from "@/hooks/useProducts"
 import Counter from "./Counter"
 
 const ProductTable = () => {
-      const { state } = useProducts();
-
+      const { state, dispatch } = useProducts();
+      const total = state.products.reduce((acc, product) => acc + product.price * product.quantity, 0);
+      console.log(total);
       return (
             <div className="h-full bg-gray-100 p-3 sm:p-5 rounded-lg">
                   <h2 className="text-xl mb-2">Articulos</h2>
@@ -28,6 +29,9 @@ const ProductTable = () => {
                                                 Cantidad
                                           </th>
 
+                                          <th className="w-32 p-3 text-sm font-semibold tracking-wide text-left">
+                                                SubTotal
+                                          </th>
                                           <th className="w-32 p-3 text-sm font-semibold tracking-wide text-left">
                                                 Total
                                           </th>
@@ -55,12 +59,24 @@ const ProductTable = () => {
 
                                                 <td className="p-3 text-sm text-gray-700">
                                                       <span className="">
-                                                            <Counter />
+                                                            <Counter
+                                                                  quantity={product.quantity}
+                                                                  onChange={(quantity) => dispatch({
+                                                                        type: "update-quantity",
+                                                                        payload: {
+                                                                              id: product.id,
+                                                                              quantity,
+                                                                        }
+                                                                  })}
+                                                            />
                                                       </span>
                                                 </td>
 
                                                 <td className="p-3 text-sm text-gray-700">
-                                                      {product.price.toFixed(2)} €
+                                                      {(product.price * product.quantity).toFixed(2)} €
+                                                </td>
+                                                <td className="p-3 text-sm text-gray-700">
+                                                      {total.toFixed(2)} €
                                                 </td>
                                           </tr>
                                     ))}

@@ -3,7 +3,7 @@ import type { Products } from "@/types";
 export type ProductActions =
       {
             type: "add-product";
-            payload: Products
+            payload: Products;
       } |
       {
             type: "delete-product";
