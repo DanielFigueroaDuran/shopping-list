@@ -5,12 +5,18 @@ import plus from "../assets/heroicons-outline_plus-sm.png"
 type CounterProps = {
       quantity: number;
       onChange: (quantity: number) => void;
+      onDeleteRequest: () => void;
 };
 
-const Counter = ({ quantity, onChange }: CounterProps) => {
+const Counter = ({ quantity, onChange, onDeleteRequest }: CounterProps) => {
 
       const handleSubtract = () => {
-            onChange(Math.max(1, quantity - 1));
+            // onChange(Math.max(1, quantity - 1));
+            if (quantity > 1) {
+                  onChange(quantity - 1);
+            } else {
+                  onDeleteRequest()
+            }
       };
 
       const handleAdd = () => {
