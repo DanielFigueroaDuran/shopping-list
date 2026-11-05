@@ -53,6 +53,7 @@ const ProductItems = ({ product, setProductToDelete }: ProductItemsProps) => {
                         <span className="p-2">
                               <RiDeleteBin6Line
                                     className="cursor-pointer w-5 h-5 text-red-800"
+                                    onClick={() => setProductToDelete(product)}
                               />
                         </span>
                   </td>

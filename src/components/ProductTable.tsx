@@ -66,16 +66,35 @@ const ProductTable = () => {
                                           />
                                     ))}
                               </tbody>
-                              <tfoot>
-                                    <tr className="border-t-2 border-gray-300">
+                              <tfoot className="border-2 border-gray-200">
+                                    {/* Fila para Móvil (colSpan 3) */}
+                                    <tr className="border-t-2 border-gray-300 md:hidden">
+                                          <td colSpan={3} className="p-4 text-right font-semibold text-gray-700">
+                                                Total:
+                                          </td>
+                                          <td className="p-4 text-right font-black text-lg">
+                                                {total.toFixed(2)} €
+                                          </td>
+                                    </tr>
+
+                                    {/* Fila para Escritorio / Desktop (colSpan 4) */}
+                                    <tr className="border-t-2 border-gray-300 hidden md:table-row">
                                           <td colSpan={4} className="p-4 text-right font-semibold text-gray-700">
+                                                Total:
+                                          </td>
+                                          <td className="p-4 text-right font-black text-lg">
+                                                {total.toFixed(2)} €
+                                          </td>
+                                    </tr>
+                                    {/* <tr className="border-t-2 border-gray-300 ">
+                                          <td colSpan={3} className="p-4 text-right font-semibold text-gray-700">
                                                 Total:
                                           </td>
 
                                           <td className="p-4 text-right font-black text-lg">
                                                 {total.toFixed(2)} €
                                           </td>
-                                    </tr>
+                                    </tr> */}
                               </tfoot>
                         </table>
                         {productToDelete && (

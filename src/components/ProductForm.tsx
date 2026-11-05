@@ -31,8 +31,12 @@ const ProductForm = () => {
 
       };
 
+      // Expression that only allows letters (including accented characters and 'ñ') and spaces
+      const onlyLettersRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
+
       const isValidProduct =
             nameProduct.trim() !== "" &&
+            onlyLettersRegex.test(nameProduct) &&
             price.trim() !== "" &&
             Number.isFinite(Number(price)) &&
             Number(price) > 0;

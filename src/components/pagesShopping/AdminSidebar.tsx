@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { BiCategory } from "react-icons/bi"
 import { BsCart3 } from "react-icons/bs"
-import { FaUser } from "react-icons/fa"
+//import { FaUser } from "react-icons/fa"
 import { GiHamburgerMenu } from "react-icons/gi"
 import { IoIosList, IoMdClose } from "react-icons/io"
 import { LuShoppingBasket } from "react-icons/lu"
@@ -31,11 +31,11 @@ const AdminSidebar = () => {
                   <ul className="hidden lg:flex flex-col gap-2">
                         <li className="flex items-center gap-3 hover:text-green-600 hover:bg-gray-100 hover:rounded-xs">
                               <IoIosList />
-                              <a href="#">Lista</a>
+                              <a href="#">Compras</a>
                         </li>
                         <li className="flex items-center gap-3 hover:text-green-600 hover:bg-gray-100 hover:rounded-xs">
                               <BiCategory />
-                              <a href="#">Categorias</a>
+                              <a href="#">Compras Realizadas</a>
                         </li>
                         <li className="flex items-center gap-3 hover:text-green-600 hover:bg-gray-100 hover:rounded-xs">
                               <MdHistory />
