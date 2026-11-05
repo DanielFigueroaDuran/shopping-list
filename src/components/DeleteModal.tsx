@@ -40,7 +40,7 @@ export const DeleteModal = ({
                                     onClick={onConfirm}
                                     className="rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700"
                               >
-                                    Sí, eliminar
+                                    Eliminar
                               </button>
                         </div>
 

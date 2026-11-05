@@ -1,14 +1,29 @@
 import { useProducts } from "@/hooks/useProducts"
-import Counter from "./Counter"
-import { RiDeleteBin6Line } from "react-icons/ri";
 import { useState } from "react";
 import type { Products } from "@/types";
 import DeleteModal from "./DeleteModal";
+import ProductItems from "./ProductItems";
 
 const ProductTable = () => {
       const [productToDelete, setProductToDelete] = useState<Products | null>(null);
       const { state, dispatch } = useProducts();
+
       const total = state.products.reduce((acc, product) => acc + product.price * product.quantity, 0);
+
+      const handleCancelDelete = () => {
+            setProductToDelete(null);
+      };
+
+      const handleConfirmDelete = () => {
+            if (!productToDelete) return;
+
+            dispatch({
+                  type: "delete-product",
+                  payload: productToDelete.id,
+            });
+
+            setProductToDelete(null);
+      };
 
       return (
             <div className="h-full bg-gray-100 p-3 sm:p-5 rounded-lg">
@@ -44,54 +59,11 @@ const ProductTable = () => {
 
                               <tbody className="divide-y divide-gray-100">
                                     {state.products.map((product) => (
-                                          <tr
+                                          <ProductItems
                                                 key={product.id}
-                                                className="border-b border-gray-200"
-                                          >
-                                                <td className="p-3 text-sm text-gray-700 text-center">
-                                                      <span>agregar</span>
-                                                </td>
-
-                                                <td className="p-3 text-sm text-gray-700">
-                                                      {product.name}
-                                                </td>
-
-                                                <td className="p-3 text-sm text-gray-700 text-center">
-                                                      <span className="p-2">
-                                                            {product.price.toFixed(2)} €
-                                                      </span>
-                                                </td>
-
-                                                <td className="p-3 text-sm text-gray-700 text-center">
-                                                      <span className="">
-                                                            <Counter
-                                                                  quantity={product.quantity}
-                                                                  onChange={(quantity) => dispatch({
-                                                                        type: "update-quantity",
-                                                                        payload: {
-                                                                              id: product.id,
-                                                                              quantity,
-                                                                        },
-                                                                  })
-                                                                  }
-                                                                  onDeleteRequest={() => setProductToDelete(product)}
-
-                                                            />
-                                                      </span>
-                                                </td>
-
-                                                <td className="flex items-center justify-center p-3 text-sm text-gray-700 text-center">
-                                                      <span className="p-2">
-                                                            <RiDeleteBin6Line
-                                                                  className="cursor-pointer w-5 h-5 text-red-800"
-                                                            />
-                                                      </span>
-                                                </td>
-
-                                                <td className="p-3 text-sm text-gray-700 text-center">
-                                                      {(product.price * product.quantity).toFixed(2)} €
-                                                </td>
-                                          </tr>
+                                                product={product}
+                                                setProductToDelete={setProductToDelete}
+                                          />
                                     ))}
                               </tbody>
                               <tfoot>
@@ -109,15 +81,8 @@ const ProductTable = () => {
                         {productToDelete && (
                               <DeleteModal
                                     productName={productToDelete.name}
-                                    onCancel={() => setProductToDelete(null)}
-                                    onConfirm={() => {
-                                          dispatch({
-                                                type: "delete-product",
-                                                payload: productToDelete.id,
-                                          });
-
-                                          setProductToDelete(null);
-                                    }}
+                                    onCancel={handleCancelDelete}
+                                    onConfirm={handleConfirmDelete}
                               />
                         )}
                   </div>
